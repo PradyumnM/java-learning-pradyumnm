@@ -10,5 +10,6 @@
     <module>multi-threading</module>
     <module>collection</module>
     <module>generics</module>
+    <module>reacttask</module>
   </modules>
 </project>

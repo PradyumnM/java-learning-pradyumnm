@@ -10,13 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.RecursiveTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * @author pradyumnm
+ *
+ */
 public class WordCountExec extends RecursiveTask<Map<String, Long>> {
 
-	private static final long serialVersionUID = -810634633659131063L;
 	private Path filePath;
     private static final Logger logger = Logger.getLogger(WordCountExec.class.getName());
 
@@ -29,7 +33,7 @@ public class WordCountExec extends RecursiveTask<Map<String, Long>> {
     protected Map<String, Long> compute() {
         try {
             List<String> strings = readAllLines(filePath, Charset.defaultCharset());
-            Map<String, Long> wordCount = new HashMap<>();
+            Map<String, Long> wordCount = new ConcurrentHashMap<>();
             for(String line : strings) {
                 StringTokenizer tk = new StringTokenizer(line);
                 while(tk.hasMoreTokens()) {

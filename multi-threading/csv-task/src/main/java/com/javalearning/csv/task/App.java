@@ -19,13 +19,12 @@ public class App {
 
 	public static void main(String[] args) {
 		List<String> datalist = new ArrayList<String>();
-		
+
 		try {
 			datalist = Files.readAllLines(Paths.get("Multithreading_Task1_Books.csv"));
 		} catch (FileNotFoundException e) {
 			logger.log(Level.SEVERE, "File to be read not found");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.log(Level.SEVERE, "File Input/Output exception");
 		}
 		ForkJoinPool pool = new ForkJoinPool();
