@@ -36,7 +36,7 @@ public class WikiCall implements Runnable {
 			URLConnection urc = url.openConnection();
 			BufferedReader in = new BufferedReader(new InputStreamReader(urc.getInputStream()));
 			JSONObject json = new JSONObject(in.readLine());
-		//	IOUtils.writeToFile(Constants.WIKI_OUTPUT_FOLDER + word + ".txt", json.getString("extract"));
+		//	writeToFile(Filename".txt", json.getString("extract"));
 		}  catch (IOException e) {
 			log.log(Level.SEVERE,"Error while reading the response from the stream :" + e.getMessage());
 		} catch (JSONException e) {

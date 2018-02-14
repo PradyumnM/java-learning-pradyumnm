@@ -82,4 +82,9 @@ public class Trie {
     return diagnosisresults;
   }
 
+public void insertAll(List<String> strings) {
+	for ( String s : strings )	
+		insert(s);
+}
+
 }

@@ -26,9 +26,8 @@ public class FilesReader {
 	static {
 
 		try {
-            List<String> strings = readAllLines(filePath, Charset.defaultCharset());
-            trieData.insert(cityUpdateUpper);
-
+			trieData.insertAll(readAllLines(filePath, Charset.defaultCharset()));
+			trieData.autoComplete("ja");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
