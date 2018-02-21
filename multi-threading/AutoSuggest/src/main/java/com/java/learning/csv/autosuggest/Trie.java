@@ -82,9 +82,22 @@ public class Trie {
     return diagnosisresults;
   }
 
-public void insertAll(List<String> strings) {
+public List<String> insertAll(List<String> strings) {
 	for ( String s : strings )	
 		insert(s);
+	return strings;
+}
+
+public void insertAllFuzzy(List<String> list, HashMap<String, String> fuzzyReferece) {
+	for ( String s : list )	
+		{
+		String temp="";
+		insert(s.replaceAll("[aeiouAEIOU]", ""));
+		fuzzyReferece.put(s.replaceAll("[aeiouAEIOU]", ""), s);
+		temp = fuzzyReferece.get(s.replaceAll("[aeiouAEIOU]", ""));
+		temp = temp == null ? s : temp+","+s;
+		fuzzyReferece.put(s.replaceAll("[aeiouAEIOU]", ""), temp);
+		}
 }
 
 }

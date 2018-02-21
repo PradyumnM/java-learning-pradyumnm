@@ -17,7 +17,7 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 	}
 
 	public LRUCache(int capacity) {
-		// access order set true to implement LRU behaviour
+		// access order set true to implement LRU
 		super(capacity + 1, 1.0f, true);
 		this.capacity = capacity;
 	}
@@ -31,27 +31,5 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 		super.put(key, value);
 	}
 
-	/**
-	 * Testing for Cache.
-	 */
-	public static void main(String[] args) {
-
-		LRUCache<Integer, Integer> cache = new LRUCache<>(3);
-
-		cache.set(2, 1); 
-		cache.set(3, 2); 
-		cache.set(4, 3);
-		cache.set(5, 0);
-		cache.set(7, 3);
-
-		// it should show null for 2,3 as cache size is 3
-		System.out.println(cache.find(2));
-
-		System.out.println(cache.find(3));
-
-		System.out.println(cache.find(4));
-		
-		System.out.println(cache.find(7));
-		
-	}
+	
 }

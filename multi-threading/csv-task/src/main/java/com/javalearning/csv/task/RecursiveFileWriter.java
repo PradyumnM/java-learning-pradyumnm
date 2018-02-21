@@ -4,7 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import cosntants.Constants;
 
 /**
  * @author pradyumnm
@@ -12,6 +15,11 @@ import java.util.logging.Logger;
  */
 public class RecursiveFileWriter extends RecursiveAction {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getLogger(RecursiveFileWriter.class.getName());
 	private int SEQUENTIAL_THRESHOLD;
 	private List<String> data;
 	int fileNo = 0;
@@ -43,15 +51,15 @@ public class RecursiveFileWriter extends RecursiveAction {
 		BufferedWriter fw;
 		try {
 			fw = new BufferedWriter(
-					new FileWriter("/home/pradyumnm/Downloads/tsk/" + "tsk" + Integer.toString(fileNo) + ".csv"));
+					new FileWriter(Constants.PUT_FOLDER + "tsk" + Integer.toString(fileNo) + ".csv"));
 			for (int i = 0; i < data.size(); i++) {
 				fw.write(data.get(i));
 				fw.newLine();
 			}
 			fw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "File witing exception");
+			
 		}
 
 	}

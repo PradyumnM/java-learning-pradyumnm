@@ -10,6 +10,8 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import cosntants.Constants;
+
 /**
  *
  * This class is used for testing the recursive file writer.
@@ -21,14 +23,14 @@ public class App {
 		List<String> datalist = new ArrayList<String>();
 
 		try {
-			datalist = Files.readAllLines(Paths.get("Multithreading_Task1_Books.csv"));
+			datalist = Files.readAllLines(Paths.get(Constants.CSV_SPLIT_FILEPATH));
 		} catch (FileNotFoundException e) {
 			logger.log(Level.SEVERE, "File to be read not found");
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "File Input/Output exception");
 		}
 		ForkJoinPool pool = new ForkJoinPool();
-		RecursiveFileWriter task = new RecursiveFileWriter(datalist, 0, 1000);
+		RecursiveFileWriter task = new RecursiveFileWriter(datalist, 0, Constants.SEQ_THRESHOLD);
 		pool.invoke(task);
 	}
 }

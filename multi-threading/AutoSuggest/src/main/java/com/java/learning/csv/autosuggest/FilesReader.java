@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,12 +24,17 @@ public class FilesReader {
 	}
 
 	public static Trie trieData = new Trie();
+	public static Trie trieDataFuzzy = new Trie();
+	public static HashMap<String,String> fuzzyReferece= new HashMap<String,String>();
 
 	static {
 
 		try {
+			List<String> list = new ArrayList<String>();
 			trieData.insertAll(readAllLines(filePath, Charset.defaultCharset()));
+			trieDataFuzzy.insertAllFuzzy(list,fuzzyReferece);
 			trieData.autoComplete("ja");
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

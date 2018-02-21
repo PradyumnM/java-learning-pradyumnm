@@ -11,5 +11,6 @@
     <module>collection</module>
     <module>generics</module>
     <module>reacttask</module>
+    <module>data_set</module>
   </modules>
 </project>
