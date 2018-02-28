@@ -1,27 +1,39 @@
 package com.java.learning.collectiontask;
 
+import java.sql.Date;
+
 public class App {
 	/**
 	 * Testing for Cache
 	 */
 	public static void main(String[] args) {
 
-		LRUCache<Integer, Integer> cache = new LRUCache<>(3);
-
-		cache.set(2, 1); 
-		cache.set(3, 2); 
-		cache.set(4, 3);
-		cache.set(5, 0);
-		cache.set(7, 3);
-
-		// it should show null for 2,3 as cache size is 3
-		System.out.println(cache.find(2));
-
-		System.out.println(cache.find(3));
-
-		System.out.println(cache.find(4));
+		LRUCache cache = new LRUCache();
+		try {
+		cache.put("pappu","12"); 
+		Thread.sleep(4);
+		cache.put("sunty","10"); 
+		Thread.sleep(4);
+		cache.put("bunty","7"); 
+		Thread.sleep(4);
+		cache.put("chunky","5"); 
+		Thread.sleep(4);
+		cache.put("punky","4"); 
+		Thread.sleep(4);
+		cache.put("munky","4"); 
+		Thread.sleep(4);
+		cache.put("sunty","3"); 
+		Thread.sleep(4);
+		cache.put("junky","2");  
+		Thread.sleep(4);
+		cache.put("Akash","1"); ; 
+		cache.get("bunty");
 		
-		System.out.println(cache.find(7));
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+		
 		
 	}
 }

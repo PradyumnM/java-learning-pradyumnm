@@ -12,5 +12,6 @@
     <module>generics</module>
     <module>reacttask</module>
     <module>data_set</module>
+    <module>observer</module>
   </modules>
 </project>
